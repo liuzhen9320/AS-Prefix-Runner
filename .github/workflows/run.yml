@@ -1,35 +1,36 @@
-name: Run ASN Data Collector (Daily at 00:00 CST)
+name: Run Data Collector
 
 on:
   schedule:
-    - cron: '0 16 * * *'  # UTC 16:00 = 北京时间 00:00
+    - cron: '0 16 * * *'
   workflow_dispatch:
 
 jobs:
   download-and-run:
     runs-on: ubuntu-latest
     steps:
-      - name: Authenticate, unarchive, download and run
-        env:
-          GH_TOKEN: ${{ secrets.PAT_REPO_ACCESS }}
-          GITHUB_TOKEN: ${{ secrets.PAT_REPO_ACCESS }}
-          DOWNLOAD_URL: ${{ secrets.DOWNLOAD_URL }}
+      - name: Unarchive liuzhen9320/AS-Prefix
         run: |
-          # echo "$GH_TOKEN" | gh auth login --with-token
-          if [ $? -ne 0 ]; then
-            echo "❌ GitHub CLI authentication failed"
-            exit 1
-          fi
-
-          # Unarchive repository
-          echo "🔄 Unarchiving liuzhen9320/AS-Prefix..."
+          echo "🔄 Attempting to unarchive liuzhen9320/AS-Prefix..."
           gh repo unarchive liuzhen9320/AS-Prefix --yes
           if [ $? -ne 0 ]; then
-            echo "❌ Failed to unarchive repository"
+            echo "❌ Failed to unarchive repository. Exiting."
             exit 1
           fi
+          echo "✅ Repository unarchived"
+        env:
+          GH_TOKEN: ${{ secrets.PAT_REPO_ACCESS }}
 
-          # Download asn-data-collector
+      - name: Checkout liuzhen9320/AS-Prefix
+        uses: actions/checkout@v4
+        with:
+          repository: liuzhen9320/AS-Prefix
+          token: ${{ secrets.PAT_REPO_ACCESS }}
+          path: ./repo
+
+      - name: Download and Run asn-data-collector
+        run: |
+          sudo apt update && sudo apt intall rsync
           echo "⬇️ Downloading asn-data-collector..."
           if command -v wget > /dev/null; then
             wget -O ./app "$DOWNLOAD_URL"
@@ -43,16 +44,53 @@ jobs:
           fi
 
           chmod +x ./app
-          echo "✅ Downloaded and made executable: ./app"
+          echo "✅ Downloaded and made executable"
 
-          # Run the app
-          echo "🚀 Running..."
+          # Run the app (output to output/data/)
+          echo "🚀 Running the data collector..."
           ./app
 
-      - name: Archive liuzhen9320/AS-Prefix back
+          # Validate output
+          if [ ! -d "output/data" ] || [ -z "$(ls -A output/data)" ]; then
+            echo "❌ No data generated in output/data/"
+            exit 1
+          fi
+          echo "✅ Data generated successfully"
+        env:
+          DOWNLOAD_URL: ${{ secrets.DOWNLOAD_URL }}
+
+      - name: Sync output to repo
+        run: |
+          mkdir -p ./repo/data
+          rsync -av --delete ./output/data/ ./repo/data/
+          echo "✅ Synced output/data/ to repo/data/"
+
+      - name: Commit and Push changes
+        run: |
+          cd ./repo
+
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+
+          if git diff-index --quiet HEAD --; then
+            echo "🟢 No changes to commit"
+            exit 0
+          fi
+
+          git add data/
+          git commit -m "chore: update ASN data $(date +'%Y-%m-%d %H:%M:%S') [skip ci]"
+
+          # Push to main or master
+          git push origin HEAD:main || git push origin HEAD:master
+          echo "✅ Changes pushed to repository"
+        env:
+          GITHUB_TOKEN: ${{ secrets.PAT_REPO_ACCESS }}
+
+      - name: Archive liuzhen9320/AS-Prefix
         if: always()
         run: |
-          # echo "${{ secrets.PAT_REPO_ACCESS }}" | gh auth login --with-token
+          echo "📦 Archiving repository..."
           gh repo archive liuzhen9320/AS-Prefix --yes
+          echo "✅ Repository archived"
         env:
           GH_TOKEN: ${{ secrets.PAT_REPO_ACCESS }}
