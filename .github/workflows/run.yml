@@ -51,6 +51,7 @@ jobs:
         run: |
           mkdir -p ./repo/data
           rsync -av --delete ./output/data/ ./repo/data/
+          mv ./output/README.md ./repo/README.md
           echo "✅ Synced output/data/ to repo/data/"
 
       - name: Commit and Push changes
