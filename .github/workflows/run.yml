@@ -1,0 +1,58 @@
+name: Run ASN Data Collector (Daily at 00:00 CST)
+
+on:
+  schedule:
+    - cron: '0 16 * * *'  # UTC 16:00 = 北京时间 00:00
+  workflow_dispatch:
+
+jobs:
+  download-and-run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Authenticate, unarchive, download and run
+        env:
+          GH_TOKEN: ${{ secrets.PAT_REPO_ACCESS }}
+          GITHUB_TOKEN: ${{ secrets.PAT_REPO_ACCESS }}
+          DOWNLOAD_URL: ${{ secrets.DOWNLOAD_URL }}
+        run: |
+          # echo "$GH_TOKEN" | gh auth login --with-token
+          if [ $? -ne 0 ]; then
+            echo "❌ GitHub CLI authentication failed"
+            exit 1
+          fi
+
+          # Unarchive repository
+          echo "🔄 Unarchiving liuzhen9320/AS-Prefix..."
+          gh repo unarchive liuzhen9320/AS-Prefix --yes
+          if [ $? -ne 0 ]; then
+            echo "❌ Failed to unarchive repository"
+            exit 1
+          fi
+
+          # Download asn-data-collector
+          echo "⬇️ Downloading asn-data-collector..."
+          if command -v wget > /dev/null; then
+            wget -O ./app "$DOWNLOAD_URL"
+          else
+            curl -L -o ./app "$DOWNLOAD_URL"
+          fi
+
+          if [ ! -f "./app" ]; then
+            echo "❌ Download failed: app file not found"
+            exit 1
+          fi
+
+          chmod +x ./app
+          echo "✅ Downloaded and made executable: ./app"
+
+          # Run the app
+          echo "🚀 Running..."
+          ./app
+
+      - name: Archive liuzhen9320/AS-Prefix back
+        if: always()
+        run: |
+          # echo "${{ secrets.PAT_REPO_ACCESS }}" | gh auth login --with-token
+          gh repo archive liuzhen9320/AS-Prefix --yes
+        env:
+          GH_TOKEN: ${{ secrets.PAT_REPO_ACCESS }}
