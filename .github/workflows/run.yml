@@ -44,11 +44,17 @@ jobs:
             exit 1
           fi
           echo "✅ Data generated successfully"
+          if [ ! -f "output/README.md" ] || [ ! -s "output/README.md" ]; then
+            echo "❌ output/README.md does not exist or is empty"
+            exit 1
+          fi
+          echo "✅ README.md generated successfully"
         env:
           DOWNLOAD_URL: ${{ secrets.DOWNLOAD_URL }}
 
       - name: Sync output to repo
         run: |
+          rm -f ./repo/README.md
           mkdir -p ./repo/data
           rsync -av --delete ./output/data/ ./repo/data/
           mv ./output/README.md ./repo/README.md
@@ -65,7 +71,7 @@ jobs:
             echo "🟢 No changes to commit"
             exit 0
           fi
-          
+
           git fetch origin main
           echo "🔨 Creating fresh orphan commit"
           git checkout --orphan temp-new-main
