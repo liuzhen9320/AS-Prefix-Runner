@@ -9,18 +9,6 @@ jobs:
   download-and-run:
     runs-on: ubuntu-latest
     steps:
-      - name: Unarchive liuzhen9320/AS-Prefix
-        run: |
-          echo "🔄 Attempting to unarchive liuzhen9320/AS-Prefix..."
-          gh repo unarchive liuzhen9320/AS-Prefix --yes
-          if [ $? -ne 0 ]; then
-            echo "❌ Failed to unarchive repository. Exiting."
-            exit 1
-          fi
-          echo "✅ Repository unarchived"
-        env:
-          GH_TOKEN: ${{ secrets.PAT_REPO_ACCESS }}
-
       - name: Checkout liuzhen9320/AS-Prefix
         uses: actions/checkout@v4
         with:
@@ -69,28 +57,24 @@ jobs:
         run: |
           cd ./repo
 
-          git config user.name "github-actions"
-          git config user.email "github-actions@github.com"
+          git config user.name "HelloTools-bot"
+          git config user.email "bot@932.moe"
 
           if git diff-index --quiet HEAD --; then
             echo "🟢 No changes to commit"
             exit 0
           fi
-
-          git add data/
+          
+          git fetch origin main
+          echo "🔨 Creating fresh orphan commit"
+          git checkout --orphan temp-new-main
+          git rm -rf --cached . > /dev/null 2>&1 || true
+          git add data/ README.md
           git commit -m "chore: update ASN data $(date +'%Y-%m-%d %H:%M:%S') [skip ci]"
-
-          # Push to main or master
-          git push origin HEAD:main || git push origin HEAD:master
+          git branch -D main || true
+          git branch -M temp-new-main main
+          git checkout main
+          git push origin main --force-with-lease
           echo "✅ Changes pushed to repository"
         env:
           GITHUB_TOKEN: ${{ secrets.PAT_REPO_ACCESS }}
-
-      - name: Archive liuzhen9320/AS-Prefix
-        if: always()
-        run: |
-          echo "📦 Archiving repository..."
-          gh repo archive liuzhen9320/AS-Prefix --yes
-          echo "✅ Repository archived"
-        env:
-          GH_TOKEN: ${{ secrets.PAT_REPO_ACCESS }}
