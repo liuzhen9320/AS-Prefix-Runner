@@ -30,7 +30,7 @@ jobs:
 
       - name: Download and Run asn-data-collector
         run: |
-          sudo apt update && sudo apt intall rsync
+          sudo apt update && sudo apt install rsync
           echo "⬇️ Downloading asn-data-collector..."
           if command -v wget > /dev/null; then
             wget -O ./app "$DOWNLOAD_URL"
