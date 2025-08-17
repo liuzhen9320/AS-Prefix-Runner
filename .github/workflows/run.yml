@@ -77,7 +77,7 @@ jobs:
           git checkout --orphan temp-new-main
           git rm -rf --cached . > /dev/null 2>&1 || true
           git add data/ README.md
-          git commit -m "chore: update ASN data $(date +'%Y-%m-%d %H:%M:%S') [skip ci]" -m "$(git status --porcelain | wc -l) files | $(git status --porcelain | sed '{:q;N;s/\n/, /g;t q}' | sed 's/^ *//g')"
+          git commit -m "chore: update ASN data | $(date +'%Y-%m-%d %H:%M:%S') | $(git status --porcelain | wc -l) files [skip ci]"
           git branch -D main || true
           git branch -M temp-new-main main
           git checkout main
