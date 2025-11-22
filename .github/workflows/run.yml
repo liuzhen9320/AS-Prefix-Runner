@@ -54,6 +54,7 @@ jobs:
 
       - name: Sync output to repo
         run: |
+          rm -f ./output/data/AS53235 ./output/data/AS271360 # Someone sent email to me to delete these ASN(s)
           rm -f ./repo/README.md
           mkdir -p ./repo/data
           rsync -av --delete ./output/data/ ./repo/data/
