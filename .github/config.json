@@ -1,0 +1,233 @@
+{
+  "version": "1.0",
+  "ai": {
+    "provider": "openai",
+    "model": "deepseek-v4-flash",
+    "base_url": "${OPENAI_BASEURL}",
+    "api_key_env": "OPENAI_API_KEY",
+    "temperature": 0.3,
+    "max_tokens": 8192,
+    "throttle_sec": 0.0,
+    "languages": [
+      "zh"
+    ]
+  },
+  "sources": {
+    "github": [
+      {
+        "type": "repo_releases",
+        "username": null,
+        "owner": "rust-lang",
+        "repo": "rust",
+        "enabled": true
+      },
+      {
+        "type": "repo_releases",
+        "username": null,
+        "owner": "ziglang",
+        "repo": "zig",
+        "enabled": true
+      },
+      {
+        "type": "repo_releases",
+        "username": null,
+        "owner": "vllm-project",
+        "repo": "vllm",
+        "enabled": true
+      },
+      {
+        "type": "repo_releases",
+        "username": null,
+        "owner": "thunderbird",
+        "repo": "thunderbolt",
+        "enabled": true
+      },
+      {
+        "type": "repo_releases",
+        "username": null,
+        "owner": "assast",
+        "repo": "outlookEmail",
+        "enabled": true
+      },
+      {
+        "type": "repo_releases",
+        "username": null,
+        "owner": "floci-io",
+        "repo": "floci",
+        "enabled": true
+      },
+      {
+        "type": "repo_releases",
+        "username": null,
+        "owner": "charmbracelet",
+        "repo": "crush",
+        "enabled": true
+      }
+    ],
+    "hackernews": {
+      "enabled": true,
+      "fetch_top_stories": 50,
+      "min_score": 100
+    },
+    "rss": [
+      {
+        "name": "量子位",
+        "url": "https://wechat2rss.xlab.app/feed/7131b577c61365cb47e81000738c10d872685908.xml",
+        "enabled": true,
+        "category": ""
+      },
+      {
+        "name": "新智元",
+        "url": "https://wechat2rss.xlab.app/feed/ede30346413ea70dbef5d485ea5cbb95cca446e7.xml",
+        "enabled": true,
+        "category": ""
+      },
+      {
+        "name": "BAIR Blog",
+        "url": "https://bair.berkeley.edu/blog/feed.xml",
+        "enabled": true,
+        "category": ""
+      },
+      {
+        "name": "Latent Space",
+        "url": "https://www.latent.space/feed",
+        "enabled": true,
+        "category": ""
+      },
+      {
+        "name": "Jay Alammar",
+        "url": "https://jalammar.github.io/feed.xml",
+        "enabled": true,
+        "category": ""
+      },
+      {
+        "name": "Ahead of AI (Sebastian Raschka)",
+        "url": "https://magazine.sebastianraschka.com/feed",
+        "enabled": true,
+        "category": ""
+      },
+      {
+        "name": "Interconnects",
+        "url": "https://www.interconnects.ai/feed",
+        "enabled": true,
+        "category": ""
+      },
+      {
+        "name": "Machine Learning Mastery",
+        "url": "https://machinelearningmastery.com/feed/",
+        "enabled": true,
+        "category": ""
+      },
+      {
+        "name": "OpenAI Blog",
+        "url": "https://openai.com/blog/rss.xml",
+        "enabled": true,
+        "category": ""
+      },
+      {
+        "name": "Sebastian Raschka",
+        "url": "https://sebastianraschka.com/rss_feed.xml",
+        "enabled": true,
+        "category": ""
+      },
+      {
+        "name": "The Gradient",
+        "url": "https://thegradient.pub/rss/",
+        "enabled": true,
+        "category": ""
+      },
+      {
+        "name": "Stanford AI Lab (SAIL) Blog",
+        "url": "https://ai.stanford.edu/blog/feed.xml",
+        "enabled": true,
+        "category": ""
+      },
+      {
+        "name": "AI Weekly",
+        "url": "https://aiweekly.co/issues.rss",
+        "enabled": true,
+        "category": ""
+      },
+      {
+        "name": "LWN.net",
+        "url": "https://lwn.net/headlines/rss",
+        "enabled": true,
+        "category": ""
+      },
+      {
+        "name": "CSS-Tricks",
+        "url": "https://css-tricks.com/feed/",
+        "enabled": true,
+        "category": ""
+      },
+      {
+        "name": "IT HOME",
+        "url": "https://www.ithome.com/rss/",
+        "enabled": true,
+        "category": ""
+      },
+      {
+        "name": "GitHub Trending - Daily",
+        "url": "https://mshibanami.github.io/GitHubTrendingRSS/daily/all.xml",
+        "enabled": true,
+        "category": "github-trending"
+      },
+      {
+        "name": "Microsoft Research",
+        "url": "https://www.microsoft.com/en-us/research/feed/",
+        "enabled": true
+      },
+      {
+        "name": "Product Hunt",
+        "url": "https://www.producthunt.com/feed",
+        "enabled": true
+      },
+      {
+        "name": "ruanyifeng",
+        "url": "https://www.ruanyifeng.com/blog/atom.xml",
+        "enabled": true
+      },
+      {
+        "name": "晚点",
+        "url": "https://rsshub.imwolf.ink/latepost",
+        "enabled": true
+      },
+      {
+        "name": "联合早报",
+        "url": "https://rsshub.imwolf.ink/zaobao/znews/world",
+        "enabled": true
+      }
+    ],
+    "reddit": {
+      "enabled": true,
+      "subreddits": [
+        {
+          "subreddit": "ProgrammingLanguages",
+          "enabled": true,
+          "sort": "hot",
+          "time_filter": "day",
+          "fetch_limit": 15,
+          "min_score": 60
+        }
+      ],
+      "users": [],
+      "fetch_comments": 10
+    },
+    "telegram": {
+      "enabled": true,
+      "channels": [
+        {
+          "channel": "zaihuapd",
+          "enabled": true,
+          "fetch_limit": 50
+        }
+      ]
+    }
+  },
+  "filtering": {
+    "ai_score_threshold": 6.0,
+    "time_window_hours": 48
+  },
+  "email": null,
+  "webhook": null
+}
