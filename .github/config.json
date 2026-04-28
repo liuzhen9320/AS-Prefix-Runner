@@ -9,8 +9,7 @@
     "max_tokens": 8192,
     "throttle_sec": 0.0,
     "languages": [
-      "zh",
-      "en"
+      "zh"
     ]
   },
   "sources": {
