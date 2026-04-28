@@ -47,6 +47,7 @@ jobs:
       - name: Prepare run
         run: |
           mv config/.github/config.json ./data/config.json
+          sed -i "s|__OPENAI_BASE_URL__|${OPENAI_BASE_URL}|g" data/config.json
 
       - name: Run Horizon
         run: uv run horizon --hours 24
