@@ -39,20 +39,6 @@
       {
         "type": "repo_releases",
         "username": null,
-        "owner": "thunderbird",
-        "repo": "thunderbolt",
-        "enabled": true
-      },
-      {
-        "type": "repo_releases",
-        "username": null,
-        "owner": "assast",
-        "repo": "outlookEmail",
-        "enabled": true
-      },
-      {
-        "type": "repo_releases",
-        "username": null,
         "owner": "floci-io",
         "repo": "floci",
         "enabled": true
@@ -67,7 +53,7 @@
     ],
     "hackernews": {
       "enabled": true,
-      "fetch_top_stories": 50,
+      "fetch_top_stories": 20,
       "min_score": 100
     },
     "rss": [
@@ -149,7 +135,7 @@
       {
         "name": "IT HOME",
         "url": "https://www.ithome.com/rss/",
-        "enabled": true
+        "enabled": false
       },
       {
         "name": "GitHub Trending - Daily",
@@ -182,10 +168,7 @@
         "name": "联合早报",
         "url": "https://rsshub.imwolf.ink/zaobao/znews/world",
         "enabled": true
-      },
-      { "name": "Nature", "url": "https://www.nature.com/nature.rss", "category": "science" },
-      { "name": "Quanta Magazine", "url": "https://api.quantamagazine.org/feed/", "category": "science" },
-      { "name": "Hackaday", "url": "https://hackaday.com/feed/", "category": "hardware" }
+      }
     ],
     "reddit": {
       "enabled": false,
@@ -208,13 +191,13 @@
         {
           "channel": "zaihuapd",
           "enabled": true,
-          "fetch_limit": 50
+          "fetch_limit": 20
         }
       ]
     }
   },
   "filtering": {
-    "ai_score_threshold": 6.0,
+    "ai_score_threshold": 7.0,
     "time_window_hours": 24
   },
   "webhook": {
