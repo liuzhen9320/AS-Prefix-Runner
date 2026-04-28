@@ -1,0 +1,43 @@
+name: Horizon Summary
+
+on:
+  schedule:
+    - cron: '0 0 */2 * *'
+  workflow_dispatch:
+
+permissions:
+  id-token: write
+  contents: write
+
+jobs:
+  daily:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+        with:
+          path: '.'
+          repository: 'Thysrael/Horizon'
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v3
+
+      - name: Install dependencies
+        run: uv sync
+
+      - name: Fetch Secrets from Infisical
+        uses: infisical/secrets-action@v1.0.9
+        with:
+          method: "oidc"
+          identity-id: "0083d8a1-eb42-4070-951e-c57c39fc683d"
+          domain: "https://s1.6l.ink"
+          project-slug: "horizon-ci-hv-1-p"
+          env-slug: "prod"
+
+      - name: Run Horizon
+        run: uv run horizon --hours 48
