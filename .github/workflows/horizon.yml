@@ -46,9 +46,7 @@ jobs:
 
       - name: Prepare run
         run: |
-          echo "OPENAI_API_KEY=$OPENAI_API_KEY" > .env
-          cat .env
-          cp config/.github/config.json .
+          mv config/.github/config.json ./data/config.json
 
       - name: Run Horizon
         run: uv run horizon --hours 48
