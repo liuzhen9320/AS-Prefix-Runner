@@ -49,4 +49,4 @@ jobs:
           mv config/.github/config.json ./data/config.json
 
       - name: Run Horizon
-        run: uv run horizon --hours 48
+        run: uv run horizon --hours 24
