@@ -67,51 +67,6 @@
         "enabled": true
       },
       {
-        "name": "BAIR Blog",
-        "url": "https://bair.berkeley.edu/blog/feed.xml",
-        "enabled": true
-      },
-      {
-        "name": "Latent Space",
-        "url": "https://www.latent.space/feed",
-        "enabled": true
-      },
-      {
-        "name": "Jay Alammar",
-        "url": "https://jalammar.github.io/feed.xml",
-        "enabled": true
-      },
-      {
-        "name": "Ahead of AI (Sebastian Raschka)",
-        "url": "https://magazine.sebastianraschka.com/feed",
-        "enabled": true
-      },
-      {
-        "name": "Interconnects",
-        "url": "https://www.interconnects.ai/feed",
-        "enabled": true
-      },
-      {
-        "name": "Machine Learning Mastery",
-        "url": "https://machinelearningmastery.com/feed/",
-        "enabled": true
-      },
-      {
-        "name": "OpenAI Blog",
-        "url": "https://openai.com/blog/rss.xml",
-        "enabled": true
-      },
-      {
-        "name": "Sebastian Raschka",
-        "url": "https://sebastianraschka.com/rss_feed.xml",
-        "enabled": true
-      },
-      {
-        "name": "The Gradient",
-        "url": "https://thegradient.pub/rss/",
-        "enabled": true
-      },
-      {
         "name": "Stanford AI Lab (SAIL) Blog",
         "url": "https://ai.stanford.edu/blog/feed.xml",
         "enabled": true
@@ -127,17 +82,12 @@
         "enabled": true
       },
       {
-        "name": "CSS-Tricks",
-        "url": "https://css-tricks.com/feed/",
-        "enabled": true
-      },
-      {
         "name": "IT HOME",
         "url": "https://www.ithome.com/rss/",
         "enabled": false
       },
       {
-        "name": "GitHub Trending - Daily",
+        "name": "GitHub Trending",
         "url": "https://mshibanami.github.io/GitHubTrendingRSS/daily/all.xml",
         "enabled": true,
         "category": "trending"
@@ -154,11 +104,6 @@
         "category": "trending"
       },
       {
-        "name": "ruanyifeng",
-        "url": "https://www.ruanyifeng.com/blog/atom.xml",
-        "enabled": true
-      },
-      {
         "name": "晚点",
         "url": "https://rsshub.imwolf.ink/latepost",
         "enabled": true
@@ -166,6 +111,31 @@
       {
         "name": "联合早报",
         "url": "https://rsshub.imwolf.ink/zaobao/znews/world",
+        "enabled": true
+      },
+      {
+        "name": "虎嗅",
+        "url": "https://rsshub.imwolf.ink/huxiu/moment",
+        "enabled": true
+      },
+      {
+        "name": "南方周末",
+        "url": "https://rsshub.imwolf.ink/infzm/2",
+        "enabled": true
+      },
+      {
+        "name": "中国日报",
+        "url": "https://rsshub.imwolf.ink/chinadaily/language/thelatest",
+        "enabled": true
+      },
+      {
+        "name": "InfoQ",
+        "url": "https://rsshub.imwolf.ink/infoq/recommend",
+        "enabled": true
+      },
+      {
+        "name": "BBC",
+        "url": "https://rsshub.imwolf.ink/bbc/chinese",
         "enabled": true
       }
     ],
