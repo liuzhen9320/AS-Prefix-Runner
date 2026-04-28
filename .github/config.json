@@ -74,104 +74,88 @@
       {
         "name": "量子位",
         "url": "https://wechat2rss.xlab.app/feed/7131b577c61365cb47e81000738c10d872685908.xml",
-        "enabled": true,
-        "category": ""
+        "enabled": true
       },
       {
         "name": "新智元",
         "url": "https://wechat2rss.xlab.app/feed/ede30346413ea70dbef5d485ea5cbb95cca446e7.xml",
-        "enabled": true,
-        "category": ""
+        "enabled": true
       },
       {
         "name": "BAIR Blog",
         "url": "https://bair.berkeley.edu/blog/feed.xml",
-        "enabled": true,
-        "category": ""
+        "enabled": true
       },
       {
         "name": "Latent Space",
         "url": "https://www.latent.space/feed",
-        "enabled": true,
-        "category": ""
+        "enabled": true
       },
       {
         "name": "Jay Alammar",
         "url": "https://jalammar.github.io/feed.xml",
-        "enabled": true,
-        "category": ""
+        "enabled": true
       },
       {
         "name": "Ahead of AI (Sebastian Raschka)",
         "url": "https://magazine.sebastianraschka.com/feed",
-        "enabled": true,
-        "category": ""
+        "enabled": true
       },
       {
         "name": "Interconnects",
         "url": "https://www.interconnects.ai/feed",
-        "enabled": true,
-        "category": ""
+        "enabled": true
       },
       {
         "name": "Machine Learning Mastery",
         "url": "https://machinelearningmastery.com/feed/",
-        "enabled": true,
-        "category": ""
+        "enabled": true
       },
       {
         "name": "OpenAI Blog",
         "url": "https://openai.com/blog/rss.xml",
-        "enabled": true,
-        "category": ""
+        "enabled": true
       },
       {
         "name": "Sebastian Raschka",
         "url": "https://sebastianraschka.com/rss_feed.xml",
-        "enabled": true,
-        "category": ""
+        "enabled": true
       },
       {
         "name": "The Gradient",
         "url": "https://thegradient.pub/rss/",
-        "enabled": true,
-        "category": ""
+        "enabled": true
       },
       {
         "name": "Stanford AI Lab (SAIL) Blog",
         "url": "https://ai.stanford.edu/blog/feed.xml",
-        "enabled": true,
-        "category": ""
+        "enabled": true
       },
       {
         "name": "AI Weekly",
         "url": "https://aiweekly.co/issues.rss",
-        "enabled": true,
-        "category": ""
+        "enabled": true
       },
       {
         "name": "LWN.net",
         "url": "https://lwn.net/headlines/rss",
-        "enabled": true,
-        "category": ""
+        "enabled": true
       },
       {
         "name": "CSS-Tricks",
         "url": "https://css-tricks.com/feed/",
-        "enabled": true,
-        "category": ""
+        "enabled": true
       },
       {
         "name": "IT HOME",
         "url": "https://www.ithome.com/rss/",
-        "enabled": true,
-        "category": ""
+        "enabled": true
       },
       {
         "name": "GitHub Trending - Daily",
         "url": "https://mshibanami.github.io/GitHubTrendingRSS/daily/all.xml",
         "enabled": true,
-        "category": "github-trending"
+        "category": "trending"
       },
       {
         "name": "Microsoft Research",
@@ -181,7 +165,8 @@
       {
         "name": "Product Hunt",
         "url": "https://www.producthunt.com/feed",
-        "enabled": true
+        "enabled": true,
+        "category": "trending"
       },
       {
         "name": "ruanyifeng",
@@ -197,10 +182,13 @@
         "name": "联合早报",
         "url": "https://rsshub.imwolf.ink/zaobao/znews/world",
         "enabled": true
-      }
+      },
+      { "name": "Nature", "url": "https://www.nature.com/nature.rss", "category": "science" },
+      { "name": "Quanta Magazine", "url": "https://api.quantamagazine.org/feed/", "category": "science" },
+      { "name": "Hackaday", "url": "https://hackaday.com/feed/", "category": "hardware" }
     ],
     "reddit": {
-      "enabled": true,
+      "enabled": false,
       "subreddits": [
         {
           "subreddit": "ProgrammingLanguages",
@@ -227,7 +215,7 @@
   },
   "filtering": {
     "ai_score_threshold": 6.0,
-    "time_window_hours": 48
+    "time_window_hours": 24
   },
   "webhook": {
     "enabled": true,
