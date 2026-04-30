@@ -46,7 +46,7 @@ jobs:
           mv config/.github/config.json ./data/config.json
           sed -i "s|__OPENAI_BASE_URL__|${OPENAI_BASE_URL}|g" data/config.json
           uv sync
-          uv add dateutil
+          uv add python-dateutil
 
       - name: Run Horizon
         run: uv run horizon --hours 24
