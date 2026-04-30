@@ -32,9 +32,6 @@ jobs:
       - name: Install uv
         uses: astral-sh/setup-uv@v3
 
-      - name: Install dependencies
-        run: uv sync
-
       - name: Fetch Secrets from Infisical
         uses: infisical/secrets-action@v1.0.9
         with:
@@ -48,6 +45,8 @@ jobs:
         run: |
           mv config/.github/config.json ./data/config.json
           sed -i "s|__OPENAI_BASE_URL__|${OPENAI_BASE_URL}|g" data/config.json
+          uv sync
+          uv add dateutil
 
       - name: Run Horizon
         run: uv run horizon --hours 24
