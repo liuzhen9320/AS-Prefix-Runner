@@ -2,7 +2,7 @@ name: Horizon Summary
 
 on:
   schedule:
-    - cron: '20 12 * * *'
+    - cron: '20 4,8,12,16 * * *'
   workflow_dispatch:
 
 permissions:
