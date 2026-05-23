@@ -45,6 +45,7 @@ jobs:
         run: |
           mv config/.github/config.json ./data/config.json
           sed -i "s|__OPENAI_BASE_URL__|${OPENAI_BASE_URL}|g" data/config.json
+          echo "43.174.247.35 ${OPENAI_BASE_DOMAIN}" >> /etc/hosts
           uv sync
           uv add python-dateutil
 
